@@ -1,0 +1,43 @@
+What is your programs parent process? 
+
+If I were to run a process right now, the parent process would be the shell that I am using, 
+in my case this would be bash. So the parent process would be my shell.
+
+
+
+What is that process' parent process?
+
+
+The parent process of my shell would be the init process, which as I have provided test results below,
+has a pid of 1.
+
+
+
+What is that process' parent process? 
+
+
+The parent process of the init process would be the swapper process, as I have shown below. I know 
+the it is the swapper process because it has pid of 0, which we know is reserved for the swapper process.  
+
+
+
+austin@LAPTOP-O6CF9NT1:~/LabTask1$ sleep 1000 &
+[1] 434
+austin@LAPTOP-O6CF9NT1:~/LabTask1$ ps -fp 434
+UID          PID    PPID  C STIME TTY          TIME CMD
+austin       434     285  0 01:25 pts/0    00:00:00 sleep 1000
+austin@LAPTOP-O6CF9NT1:~/LabTask1$ ps -fp 285
+UID          PID    PPID  C STIME TTY          TIME CMD
+austin       285     284  0 01:16 pts/0    00:00:00 -bash
+austin@LAPTOP-O6CF9NT1:~/LabTask1$ ps -fp 284
+UID          PID    PPID  C STIME TTY          TIME CMD
+root         284     283  0 01:16 ?        00:00:00 /init
+austin@LAPTOP-O6CF9NT1:~/LabTask1$ ps -fp 283
+UID          PID    PPID  C STIME TTY          TIME CMD
+root         283       2  0 01:16 ?        00:00:00 /init
+austin@LAPTOP-O6CF9NT1:~/LabTask1$ ps -fp 2
+UID          PID    PPID  C STIME TTY          TIME CMD
+root           2       1  0 01:16 ?        00:00:00 /init
+austin@LAPTOP-O6CF9NT1:~/LabTask1$ ps -fp 1
+UID          PID    PPID  C STIME TTY          TIME CMD
+root           1       0  0 01:16 ?        00:00:00 /sbin/init

@@ -1,0 +1,22 @@
+My Pipeline Command: 
+
+ls -A | wc -l
+
+Explanation:
+
+The first part ls -A, is found in man ls, and what it does is list all of the directories and subdirectories, 
+however ignoring . and .., which are the current directory and parent directory. So this abides by the instructions,
+
+Next the pipeline syntax | means we take the input of what comes first, and applies this to the command that follows.
+
+The command that follows is found in man wc, and what it does is gets the word count, and the -l signifies
+that we want the number of lines. 
+
+This should accomplish our task of getting a count of all directories and subdirectories ignonring our
+current and parent directory. 
+
+
+
+
+
+
